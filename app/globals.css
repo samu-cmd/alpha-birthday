@@ -1,0 +1,263 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #597680;
+  --bg-deep: #3c555f;
+  --panel: #efe8dc;
+  --panel-soft: rgba(239, 232, 220, 0.82);
+  --panel-strong: #f7f1e6;
+  --ink: #0f1214;
+  --ink-soft: #304148;
+  --line: rgba(15, 18, 20, 0.12);
+  --brand: #0d5a53;
+  --brand-strong: #083f3a;
+  --brand-soft: #8fc3b3;
+  --gold: #b9904b;
+  --danger: #8e3b3b;
+  --success: #25674a;
+  --shadow: 0 24px 60px rgba(12, 24, 28, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at top left, rgba(143, 195, 179, 0.25), transparent 28%),
+    radial-gradient(circle at top right, rgba(185, 144, 75, 0.12), transparent 24%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(13, 90, 83, 0.08), transparent 48%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 36%);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 2rem 1rem 4rem;
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(22px);
+}
+
+.paper-panel {
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+  box-shadow: var(--shadow);
+}
+
+.alpha-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(13, 90, 83, 0.12);
+  border-radius: 2rem;
+  background:
+    linear-gradient(155deg, rgba(13, 90, 83, 0.1), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2)),
+    var(--panel-strong);
+  box-shadow: var(--shadow);
+}
+
+.alpha-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 13rem;
+  height: 13rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(143, 195, 179, 0.26), transparent 72%);
+  pointer-events: none;
+}
+
+.alpha-card::after {
+  content: "";
+  position: absolute;
+  right: -3rem;
+  bottom: -4rem;
+  width: 14rem;
+  height: 14rem;
+  border-radius: 2.5rem;
+  border: 1px solid rgba(13, 90, 83, 0.08);
+  transform: rotate(28deg);
+  pointer-events: none;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 18, 20, 0.08);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.badge-open {
+  background: rgba(143, 195, 179, 0.22);
+  color: var(--brand-strong);
+}
+
+.badge-complete {
+  background: rgba(185, 144, 75, 0.18);
+  color: #6f5320;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid rgba(15, 18, 20, 0.14);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.9rem 1rem;
+  color: var(--ink);
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    background 140ms ease;
+}
+
+.field:focus {
+  outline: none;
+  border-color: rgba(13, 90, 83, 0.5);
+  box-shadow: 0 0 0 4px rgba(13, 90, 83, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  padding: 0.9rem 1.3rem;
+  font-weight: 700;
+  transition:
+    transform 140ms ease,
+    opacity 140ms ease,
+    background 140ms ease,
+    color 140ms ease,
+    border-color 140ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
+.btn-primary {
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  color: white;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(15, 18, 20, 0.1);
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--ink);
+}
+
+.btn-danger {
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, #995151, var(--danger));
+  color: white;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(13, 90, 83, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 90, 83, 0.06) 1px, transparent 1px);
+  background-position: center;
+  background-size: 24px 24px;
+}
+
+.message-tape {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.2rem;
+  width: 5rem;
+  height: 1.1rem;
+  border-radius: 0.3rem;
+  background: rgba(185, 144, 75, 0.26);
+  transform: rotate(9deg);
+}
+
+.signature-paper {
+  border: 1px dashed rgba(13, 90, 83, 0.28);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.72)),
+    repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 1.95rem,
+      rgba(13, 90, 83, 0.06) 1.95rem,
+      rgba(13, 90, 83, 0.06) 2rem
+    );
+}
+
+.screen-only {
+  display: initial;
+}
+
+.print-only {
+  display: none;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 14mm;
+}
+
+@media print {
+  html,
+  body {
+    background: white !important;
+  }
+
+  .screen-only {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .app-shell {
+    min-height: auto;
+    padding: 0;
+  }
+
+  .paper-panel,
+  .alpha-card {
+    box-shadow: none !important;
+  }
+}

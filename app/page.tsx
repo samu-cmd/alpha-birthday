@@ -8,7 +8,6 @@ import {
 } from "@/app/actions";
 import { CopyLinkButton } from "@/components/copy-link-button";
 import { FormStatusButton } from "@/components/form-status-button";
-import { CardCanvas } from "@/components/card-canvas";
 import { ADMIN_EMAIL, getAdminSession } from "@/lib/auth";
 import { listCards } from "@/lib/cards";
 
@@ -54,6 +53,15 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const createdSlug = readSearchValue(params.created);
   const completedSlug = readSearchValue(params.completed);
   const createError = readSearchValue(params.create);
+  const processSteps = [
+    "Create one private birthday card for the colleague you are celebrating.",
+    "Share the signing link only with the people who should add a message.",
+    "Complete the card when the messages are in and download the final PDF.",
+  ];
+  const publicNotes = [
+    "No public birthday list appears on the home page when someone is not signed in.",
+    "Only the creator sees the dashboard. Everyone else needs a direct shared card link.",
+  ];
 
   return (
     <main className="app-shell">
@@ -61,7 +69,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         <section className="glass-panel hero-grid overflow-hidden rounded-[2.4rem] border px-6 py-8 text-white shadow-[0_30px_90px_rgba(6,15,18,0.18)] sm:px-10 sm:py-10">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2">
+              <div className="flex flex-wrap items-center gap-3">
                 <Image
                   src="/Alpha-Color-Dark.png"
                   alt="Alpha logo"
@@ -70,29 +78,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   priority
                   className="rounded-lg bg-white/65 px-2 py-1"
                 />
-                <span className="font-mono text-xs uppercase tracking-[0.32em] text-white/78">
-                  Birthday card studio
+                <span className="app-kicker text-white/82">
+                  Private birthday workflow
                 </span>
               </div>
 
               <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-                Create one beautiful card, share one link, collect every message.
+                Keep the workspace professional while each shared card still feels personal.
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-white/78">
-                Simukelo signs in to create and complete cards. Everyone else opens
-                the shared link, writes a message, and signs. Once the card is
-                completed, signing closes and the final version is ready to
-                download as a PDF.
+                The Alpha dashboard stays clean, branded, and private. Only the
+                actual birthday card becomes warm and celebratory, and only the
+                people with the shared link can open it and sign it.
               </p>
             </div>
 
-            <div className="rounded-[2rem] border border-white/14 bg-black/10 p-5 lg:max-w-sm">
+            <div className="rounded-[2rem] border border-white/12 bg-white/8 p-5 lg:max-w-sm">
               <p className="font-mono text-xs uppercase tracking-[0.26em] text-white/65">
-                Admin access
+                Privacy and access
               </p>
               <p className="mt-3 text-sm leading-7 text-white/78">
-                Only <span className="font-semibold text-white">{ADMIN_EMAIL}</span>{" "}
-                can create cards, close signing, and download the final PDF.
+                No birthdays are listed publicly here. Only{" "}
+                <span className="font-semibold text-white">{ADMIN_EMAIL}</span>{" "}
+                can manage cards, and signing is only available to people who
+                receive the direct card link.
               </p>
             </div>
           </div>
@@ -100,56 +109,52 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
         {!session ? (
           <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="paper-panel rounded-[2rem] p-6 sm:p-8">
-              <p className="font-mono text-xs uppercase tracking-[0.28em] text-[var(--brand)]">
-                How it works
-              </p>
-              <div className="mt-5 grid gap-4 sm:grid-cols-3">
-                {[
-                  "Create a birthday card for someone special.",
-                  "Share the public signing link with the whole team.",
-                  "Complete the card and download the final version as a PDF.",
-                ].map((item, index) => (
-                  <div
-                    key={item}
-                    className="rounded-[1.4rem] border border-[rgba(15,18,20,0.08)] bg-white/60 p-5"
-                  >
-                    <p className="font-mono text-sm text-[var(--brand)]">
-                      0{index + 1}
+            <div className="space-y-8">
+              <section className="paper-panel rounded-[2rem] p-6 sm:p-8">
+                <p className="font-mono text-xs uppercase tracking-[0.28em] text-[var(--brand)]">
+                  How it works
+                </p>
+                <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                  {processSteps.map((item, index) => (
+                    <div key={item} className="info-tile rounded-[1.4rem] p-5">
+                      <p className="font-mono text-sm text-[var(--brand)]">
+                        0{index + 1}
+                      </p>
+                      <p className="mt-3 text-base leading-7 text-[var(--ink-soft)]">
+                        {item}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="paper-panel rounded-[2rem] p-6 sm:p-8">
+                <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+                  <div className="max-w-xl">
+                    <p className="font-mono text-xs uppercase tracking-[0.28em] text-[var(--brand)]">
+                      Public homepage
                     </p>
+                    <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">
+                      Clean on the outside, personal only where it should be
+                    </h2>
                     <p className="mt-3 text-base leading-7 text-[var(--ink-soft)]">
-                      {item}
+                      This page stays professional for a busy workplace. It does not
+                      list birthdays, cards, or recipients for visitors who are not
+                      signed in.
                     </p>
                   </div>
-                ))}
-              </div>
 
-              <div className="mt-6">
-                <CardCanvas
-                  compact
-                  card={{
-                    id: "preview",
-                    slug: "preview",
-                    recipientName: "Samu",
-                    occasionTitle: "Birthday Wishes for Samu",
-                    coverMessage:
-                      "Samu, this is a card full of messages from people who appreciate your energy, your kindness, and the way you show up for everyone around you.",
-                    createdBy: ADMIN_EMAIL,
-                    createdAt: new Date().toISOString(),
-                    updatedAt: new Date().toISOString(),
-                    status: "open",
-                    completedAt: null,
-                    entries: [
-                      {
-                        id: "entry-1",
-                        signerName: "Alpha Team",
-                        message: "Wishing you a year full of joy, growth, and unforgettable wins.",
-                        createdAt: new Date().toISOString(),
-                      },
-                    ],
-                  }}
-                />
-              </div>
+                  <div className="grid gap-4 lg:max-w-md">
+                    {publicNotes.map((item) => (
+                      <div key={item} className="privacy-card rounded-[1.35rem] p-5">
+                        <p className="text-sm leading-7 text-[var(--ink-soft)]">
+                          {item}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
             </div>
 
             <div className="paper-panel rounded-[2rem] p-6 sm:p-8">
@@ -228,6 +233,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">
                     Create a new birthday card
                   </h2>
+                  <p className="mt-3 max-w-lg text-base leading-7 text-[var(--ink-soft)]">
+                    The dashboard stays private and practical so you can manage cards
+                    quickly without exposing birthdays to the wider team.
+                  </p>
                 </div>
 
                 <form action={logoutAction}>
@@ -310,6 +319,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">
                     Share, monitor, and complete cards
                   </h2>
+                  <p className="mt-3 max-w-2xl text-base leading-7 text-[var(--ink-soft)]">
+                    This list is only visible to the creator. Recipients and teammates
+                    only see a card when you send them its direct link.
+                  </p>
                 </div>
                 <div className="rounded-[1.2rem] border border-[rgba(15,18,20,0.08)] bg-white/60 px-4 py-3 text-right">
                   <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--brand)]">

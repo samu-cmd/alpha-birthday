@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffecd2;
-  --bg-deep: #f9c98b;
-  --panel: #fff4e8;
-  --panel-soft: rgba(255, 244, 232, 0.84);
-  --panel-strong: #fffaf3;
-  --ink: #0f1214;
-  --ink-soft: #4d4b58;
-  --line: rgba(15, 18, 20, 0.12);
-  --brand: #d95d4a;
-  --brand-strong: #a73f31;
-  --brand-soft: #ffc9a4;
-  --gold: #f2b544;
+  --bg: #ecf4f1;
+  --bg-deep: #d4e3de;
+  --panel: #f8fbfa;
+  --panel-soft: rgba(248, 251, 250, 0.9);
+  --panel-strong: #ffffff;
+  --ink: #10221f;
+  --ink-soft: #506662;
+  --line: rgba(16, 34, 31, 0.1);
+  --brand: #0d5a53;
+  --brand-strong: #083f3a;
+  --brand-soft: #8fc3b3;
+  --gold: #b9904b;
   --danger: #8e3b3b;
   --success: #25674a;
-  --shadow: 0 28px 70px rgba(187, 106, 69, 0.16);
+  --shadow: 0 22px 48px rgba(13, 37, 34, 0.1);
 }
 
 * {
@@ -24,8 +24,8 @@
 
 html {
   background:
-    radial-gradient(circle at top left, rgba(255, 143, 107, 0.24), transparent 30%),
-    radial-gradient(circle at top right, rgba(102, 199, 190, 0.18), transparent 26%),
+    radial-gradient(circle at top left, rgba(143, 195, 179, 0.18), transparent 30%),
+    radial-gradient(circle at top right, rgba(13, 90, 83, 0.1), transparent 24%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
 }
 
@@ -34,9 +34,9 @@ body {
   min-height: 100vh;
   color: var(--ink);
   background:
-    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.45), transparent 20%),
-    linear-gradient(135deg, rgba(255, 143, 107, 0.1), transparent 52%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 36%);
+    radial-gradient(circle at 10% 12%, rgba(255, 255, 255, 0.6), transparent 22%),
+    radial-gradient(circle at 88% 18%, rgba(143, 195, 179, 0.16), transparent 20%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 40%);
 }
 
 a {
@@ -59,9 +59,11 @@ textarea {
 }
 
 .glass-panel {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(135deg, rgba(9, 62, 58, 0.94), rgba(13, 90, 83, 0.88)),
+    rgba(13, 90, 83, 0.92);
+  backdrop-filter: blur(18px);
 }
 
 .paper-panel {
@@ -71,6 +73,11 @@ textarea {
 }
 
 .alpha-card {
+  --brand: #d95d4a;
+  --brand-strong: #a73f31;
+  --ink-soft: #4d4b58;
+  --panel-strong: #fffaf3;
+  --shadow: 0 28px 70px rgba(187, 106, 69, 0.16);
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(217, 93, 74, 0.14);
@@ -211,13 +218,13 @@ textarea {
 
 .btn-primary {
   border: 1px solid transparent;
-  background: linear-gradient(135deg, var(--brand), #f28d42);
+  background: linear-gradient(135deg, var(--brand), #127167);
   color: white;
 }
 
 .btn-secondary {
   border: 1px solid rgba(15, 18, 20, 0.1);
-  background: rgba(255, 255, 255, 0.68);
+  background: rgba(255, 255, 255, 0.84);
   color: var(--ink);
 }
 
@@ -229,10 +236,43 @@ textarea {
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-position: center;
-  background-size: 24px 24px;
+  background-size: 28px 28px;
+}
+
+.app-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.55rem 0.95rem;
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.app-kicker::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8fc3b3, #ffffff);
+}
+
+.privacy-card {
+  border: 1px solid rgba(16, 34, 31, 0.08);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 10px 24px rgba(9, 36, 33, 0.05);
+}
+
+.info-tile {
+  border: 1px solid rgba(16, 34, 31, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(247, 251, 250, 0.76));
 }
 
 .message-tape {

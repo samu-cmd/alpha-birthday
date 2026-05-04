@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #597680;
-  --bg-deep: #3c555f;
-  --panel: #efe8dc;
-  --panel-soft: rgba(239, 232, 220, 0.82);
-  --panel-strong: #f7f1e6;
+  --bg: #ffecd2;
+  --bg-deep: #f9c98b;
+  --panel: #fff4e8;
+  --panel-soft: rgba(255, 244, 232, 0.84);
+  --panel-strong: #fffaf3;
   --ink: #0f1214;
-  --ink-soft: #304148;
+  --ink-soft: #4d4b58;
   --line: rgba(15, 18, 20, 0.12);
-  --brand: #0d5a53;
-  --brand-strong: #083f3a;
-  --brand-soft: #8fc3b3;
-  --gold: #b9904b;
+  --brand: #d95d4a;
+  --brand-strong: #a73f31;
+  --brand-soft: #ffc9a4;
+  --gold: #f2b544;
   --danger: #8e3b3b;
   --success: #25674a;
-  --shadow: 0 24px 60px rgba(12, 24, 28, 0.18);
+  --shadow: 0 28px 70px rgba(187, 106, 69, 0.16);
 }
 
 * {
@@ -24,8 +24,8 @@
 
 html {
   background:
-    radial-gradient(circle at top left, rgba(143, 195, 179, 0.25), transparent 28%),
-    radial-gradient(circle at top right, rgba(185, 144, 75, 0.12), transparent 24%),
+    radial-gradient(circle at top left, rgba(255, 143, 107, 0.24), transparent 30%),
+    radial-gradient(circle at top right, rgba(102, 199, 190, 0.18), transparent 26%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
 }
 
@@ -34,8 +34,9 @@ body {
   min-height: 100vh;
   color: var(--ink);
   background:
-    linear-gradient(135deg, rgba(13, 90, 83, 0.08), transparent 48%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 36%);
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.45), transparent 20%),
+    linear-gradient(135deg, rgba(255, 143, 107, 0.1), transparent 52%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 36%);
 }
 
 a {
@@ -72,11 +73,12 @@ textarea {
 .alpha-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(13, 90, 83, 0.12);
+  border: 1px solid rgba(217, 93, 74, 0.14);
   border-radius: 2rem;
   background:
-    linear-gradient(155deg, rgba(13, 90, 83, 0.1), transparent 30%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2)),
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.78), transparent 28%),
+    linear-gradient(135deg, rgba(255, 198, 173, 0.62), transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 246, 236, 0.72)),
     var(--panel-strong);
   box-shadow: var(--shadow);
 }
@@ -84,25 +86,58 @@ textarea {
 .alpha-card::before {
   content: "";
   position: absolute;
-  inset: 0 auto auto 0;
-  width: 13rem;
-  height: 13rem;
+  inset: -5rem auto auto -4rem;
+  width: 15rem;
+  height: 15rem;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(143, 195, 179, 0.26), transparent 72%);
+  background: radial-gradient(circle, rgba(255, 209, 102, 0.34), transparent 70%);
   pointer-events: none;
 }
 
 .alpha-card::after {
   content: "";
   position: absolute;
-  right: -3rem;
+  right: -4rem;
   bottom: -4rem;
-  width: 14rem;
-  height: 14rem;
-  border-radius: 2.5rem;
-  border: 1px solid rgba(13, 90, 83, 0.08);
-  transform: rotate(28deg);
+  width: 18rem;
+  height: 18rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(102, 199, 190, 0.2), transparent 68%);
   pointer-events: none;
+}
+
+.celebration-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 210, 160, 0.8));
+  padding: 0.7rem 1rem;
+  color: var(--brand-strong);
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 28px rgba(217, 93, 74, 0.12);
+}
+
+.celebration-kicker::before {
+  content: " ";
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffd166, #ff8f6b);
+}
+
+.celebration-meta {
+  min-width: min(100%, 22rem);
+  display: grid;
+  gap: 1rem;
+  border: 1px solid rgba(217, 93, 74, 0.1);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.62);
+  padding: 1.1rem;
 }
 
 .badge {
@@ -119,13 +154,13 @@ textarea {
 }
 
 .badge-open {
-  background: rgba(143, 195, 179, 0.22);
-  color: var(--brand-strong);
+  background: rgba(102, 199, 190, 0.2);
+  color: #1d6e66;
 }
 
 .badge-complete {
-  background: rgba(185, 144, 75, 0.18);
-  color: #6f5320;
+  background: rgba(255, 209, 102, 0.24);
+  color: #8d6316;
 }
 
 .field {
@@ -176,7 +211,7 @@ textarea {
 
 .btn-primary {
   border: 1px solid transparent;
-  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  background: linear-gradient(135deg, var(--brand), #f28d42);
   color: white;
 }
 
@@ -194,34 +229,107 @@ textarea {
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(13, 90, 83, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(13, 90, 83, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
   background-position: center;
   background-size: 24px 24px;
 }
 
 .message-tape {
   position: absolute;
-  right: 1.25rem;
-  top: 1.2rem;
-  width: 5rem;
-  height: 1.1rem;
+  right: 1.4rem;
+  top: 1.15rem;
+  width: 5.3rem;
+  height: 1.15rem;
   border-radius: 0.3rem;
-  background: rgba(185, 144, 75, 0.26);
-  transform: rotate(9deg);
+  background: rgba(255, 209, 102, 0.42);
+  transform: rotate(10deg);
 }
 
 .signature-paper {
-  border: 1px dashed rgba(13, 90, 83, 0.28);
+  border: 1px dashed rgba(217, 93, 74, 0.22);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.72)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 248, 240, 0.76)),
     repeating-linear-gradient(
       180deg,
       transparent,
       transparent 1.95rem,
-      rgba(13, 90, 83, 0.06) 1.95rem,
-      rgba(13, 90, 83, 0.06) 2rem
+      rgba(217, 93, 74, 0.06) 1.95rem,
+      rgba(217, 93, 74, 0.06) 2rem
     );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.message-grid {
+  align-items: start;
+}
+
+.wish-card {
+  border: 1px solid rgba(217, 93, 74, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 247, 236, 0.84));
+  box-shadow: 0 12px 28px rgba(217, 93, 74, 0.07);
+}
+
+.wish-empty {
+  border: 1px dashed rgba(217, 93, 74, 0.22);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.balloon-scene,
+.confetti-layer {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+.balloon {
+  position: absolute;
+  width: 4.2rem;
+  height: 5rem;
+  border-radius: 50% 50% 46% 46%;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--balloon-color) 78%, white) 0%,
+    var(--balloon-color) 100%
+  );
+  box-shadow:
+    inset -0.5rem -0.7rem 0 rgba(0, 0, 0, 0.06),
+    0 14px 24px rgba(0, 0, 0, 0.08);
+}
+
+.balloon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.38rem;
+  width: 0.8rem;
+  height: 0.7rem;
+  background: var(--balloon-color);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  transform: translateX(-50%);
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.18rem);
+  width: 1px;
+  height: 5.2rem;
+  background: rgba(95, 92, 95, 0.38);
+  transform: translateX(-50%) rotate(8deg);
+  transform-origin: top center;
+}
+
+.confetti-dot {
+  position: absolute;
+  width: 0.7rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: var(--confetti-color);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
+  transform: rotate(var(--rotate, 0deg));
 }
 
 .screen-only {
@@ -258,6 +366,11 @@ textarea {
 
   .paper-panel,
   .alpha-card {
+    box-shadow: none !important;
+  }
+
+  .celebration-meta,
+  .wish-card {
     box-shadow: none !important;
   }
 }

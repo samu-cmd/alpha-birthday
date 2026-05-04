@@ -1,13 +1,11 @@
-"use client";
+type PrintButtonProps = {
+  href: string;
+};
 
-export function PrintButton() {
+export function PrintButton({ href }: PrintButtonProps) {
   return (
-    <button
-      className="btn btn-primary"
-      type="button"
-      onClick={() => window.print()}
-    >
-      Download as PDF
-    </button>
+    <a className="btn btn-primary" href={href}>
+      Download PDF card
+    </a>
   );
 }

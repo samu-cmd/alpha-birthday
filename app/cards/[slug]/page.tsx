@@ -106,7 +106,7 @@ export default async function CardPage({
                 Signing closed
               </p>
               <p className="mt-4 text-lg leading-8 text-[var(--ink-soft)]">
-                The creator has finalized this card and it is now locked for PDF
+                The creator has finalized this card and it is now locked for
                 download.
               </p>
             </div>

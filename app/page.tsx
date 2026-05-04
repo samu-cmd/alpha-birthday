@@ -81,8 +81,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               <p className="mt-5 max-w-2xl text-lg leading-8 text-white/78">
                 Simukelo signs in to create and complete cards. Everyone else opens
                 the shared link, writes a message, and signs. Once the card is
-                completed, signing closes and the final version is ready to save as
-                a PDF.
+                completed, signing closes and the final version is ready to
+                download as a PDF.
               </p>
             </div>
 
@@ -92,7 +92,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </p>
               <p className="mt-3 text-sm leading-7 text-white/78">
                 Only <span className="font-semibold text-white">{ADMIN_EMAIL}</span>{" "}
-                can create cards, close signing, and open the PDF-ready view.
+                can create cards, close signing, and download the final PDF.
               </p>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 {[
                   "Create a birthday card for someone special.",
                   "Share the public signing link with the whole team.",
-                  "Complete the card and save the final version as PDF.",
+                  "Complete the card and download the final version as a PDF.",
                 ].map((item, index) => (
                   <div
                     key={item}
@@ -161,7 +161,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </h2>
               <p className="mt-3 max-w-lg text-base leading-7 text-[var(--ink-soft)]">
                 The creator account is the only one that can start a card, complete
-                it, and open the print-friendly PDF view.
+                it, and download the final PDF card.
               </p>
 
               <div className="mt-6 space-y-3">
@@ -252,7 +252,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 ) : null}
                 {completedSlug ? (
                   <Notification tone="success">
-                    Card completed. It is now locked and ready for PDF download.
+                    Card completed. It is now locked and ready to download.
                   </Notification>
                 ) : null}
               </div>
@@ -382,7 +382,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                               </form>
                             ) : (
                               <Link className="btn btn-primary" href={printUrl}>
-                                Open PDF view
+                                Open final card
                               </Link>
                             )}
                           </div>

@@ -26,6 +26,8 @@ export default async function CardPrintPage({ params }: CardPrintPageProps) {
     redirect(`/cards/${slug}`);
   }
 
+  const downloadUrl = `/cards/${slug}/download`;
+
   return (
     <main className="app-shell">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6">
@@ -33,14 +35,14 @@ export default async function CardPrintPage({ params }: CardPrintPageProps) {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.28em] text-[var(--brand)]">
-                PDF-ready view
+                Final card preview
               </p>
               <h1 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">
                 Final birthday card for {card.recipientName}
               </h1>
               <p className="mt-3 max-w-2xl text-base leading-7 text-[var(--ink-soft)]">
-                Use the button on the right, then choose &quot;Save as PDF&quot; in
-                the print dialog to download the finished card.
+                Use the button on the right to download the finished card directly
+                as a PDF.
               </p>
             </div>
 
@@ -48,7 +50,7 @@ export default async function CardPrintPage({ params }: CardPrintPageProps) {
               <Link className="btn btn-secondary" href="/">
                 Back to dashboard
               </Link>
-              <PrintButton />
+              <PrintButton href={downloadUrl} />
             </div>
           </div>
         </section>
